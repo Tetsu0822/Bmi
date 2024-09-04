@@ -21,4 +21,5 @@ fun main() {
     val isAdult = false
     //Char
     var c ='A'
+    println(c)
 }
