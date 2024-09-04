@@ -5,11 +5,16 @@ class Hello {
 }
 
 fun main() {
-    val p = Person() //記憶體內建立物件 p 的住址
-    p.hello()
-    p.weight = 65.5f
-    p.height = 1.7f
+    //主要建構子直接設值
+    val p = Person(name = "Hank", weight = 65.5f, height = 1.7f) //記憶體內建立物件 p 的住址
     println(p.bmi())
+    //Ctrl + P 顯示建構子內容
+    var tetsu = Person(name = "Tetsu", weight = 76.2f, height = 1.72f)
+    println(p.name + ":" + p.bmi())
+    println(tetsu.name + ":" + tetsu.bmi())
+    p.hello()
+//    p.weight = 65.5f
+//    p.height = 1.7f
     //Bmi
 
     val w = 65.5f
