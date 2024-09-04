@@ -1,6 +1,34 @@
 package tw.com.donhi.bmi
 
 fun main() {
+    //陣列 array
+    var array = intArrayOf(2,5,8)
+    println(array.size) //size 計算有多少元素
+    println(array[2])   //印出第 n 個數值
+    //println(array[3])   //Excpetion 例外
+
+    //字串陣列
+    var ss = arrayOf("星期日","星期一","星期二")
+    println(ss.size)
+    println(ss.get(0))
+    for (day in ss) {
+        println(day)
+    }
+
+    //重複一定次數程式 For 迴圈
+    //range 代表一定的範圍
+    var range = 0..10
+    for (i in 1..30) {
+        if (i%2 == 1) {
+            print("*")
+        } else {
+            print(" ")
+        }
+    }
+    println()
+    for (i in 1..10 step 2) print(i)
+    println()
+
     //null 空值
     var name:String? = "Tetsu" // String + ? 表 name 可以為空值(null)
     println(name?.length) // name? 表若 name 不是 null 才會繼續執行 length
