@@ -7,7 +7,17 @@ class Hello {
 fun main() {
     val p = Person() //記憶體內建立物件 p 的住址
     p.hello()
+    p.weight = 65.5f
+    p.height = 1.7f
+    println(p.bmi())
+    //Bmi
 
+    val w = 65.5f
+    val h = 1.7f
+    val bmi = w / (h * h)
+    println("BMI:" + bmi)
+
+    /*
     println("Hello Kotlin!")
 
     //Byte(8bits), Short(16), Int(32), Long(64)
@@ -26,4 +36,5 @@ fun main() {
     //Char 字元 需使用 單引號
     var c ='A'
     println(c)
+    */
 }
