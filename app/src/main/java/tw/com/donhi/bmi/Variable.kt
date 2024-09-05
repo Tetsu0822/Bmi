@@ -1,8 +1,17 @@
 package tw.com.donhi.bmi
 
 fun main() {
+    //集合 List
+    var list = mutableListOf<Int>(2, 5, 8)
+    println(list)
+    list.add(13)
+    println(list)
+    list.removeAt(1)
+    println(list)
+
     //陣列 array
     var array = intArrayOf(2,5,8)
+    println(array) //印出的是陣列的住址
     println(array.size) //size 計算有多少元素
     println(array[2])   //印出第 n 個數值
     //println(array[3])   //Excpetion 例外
