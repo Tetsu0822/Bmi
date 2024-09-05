@@ -10,13 +10,18 @@ package tw.com.donhi.bmi.student
 //主建構子可預先設定值
 class Student(val id: String, val name: String,
                 var english: Int = 0, var math: Int = 0) {
+    //類別層級的屬性(物件共用一屬性) static, Companion Object(陪同型物件)
+    companion object {
+        var pass = 60
+    }
 
     //次要建構子是為了讓類別在某些情境上的使用，更能夠符合他們的需求
     //冒號後為回傳至主要建構子
 //    constructor(id: String, name: String) : this(id,name,0,0)
     fun print() {
+        val mark = if (average() < pass) "*" else " "
         // /t 為定位點即空白
-        println("$id\t$name\t$english\t$math\t${grading()}")
+        println("$id\t$name\t$english\t$math\t${average()}$mark\t${grading()}")
     }
     //簡化成下面 fun
     /*fun average() : Int {
@@ -45,25 +50,28 @@ class Student(val id: String, val name: String,
 }
 
 //演練實作程式
+//Companion
 fun main() {
+    //物件產生前可以使用Companion Object
+    Student.pass = 50
     //利用集合印出學生資料
     var students = listOf<Student>(
-        Student("001", "Jack", 100, 100),
+        Student("001", "Jack", 40, 60),
         Student("002", "Tetsu", 95, 99),
         Student("003", "Jane")
     )
-    for (i in 0..2) {
-        students.get(i).print()
-    }
     //直接讓集合列出每一個資料
     for (stu in students) {
         stu.print()
     }
 
+    /*for (i in 0..2) {
+        students.get(i).print()
+    }
     var stu1 = Student("001", "Jack", 100, 100)
     var stu2 = Student("002", "Tetsu", 95, 99)
     var stu3 = Student("003", "Jane")
     stu1.print()
     stu2.print()
-    stu3.print()
+    stu3.print()*/
 }
