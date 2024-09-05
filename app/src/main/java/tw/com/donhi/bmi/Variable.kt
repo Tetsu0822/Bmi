@@ -1,8 +1,18 @@
 package tw.com.donhi.bmi
 
 fun main() {
+    //挑戰
+    val nums = mutableListOf<Int>(1,2,3,4,5,6,7,8,9,10)
+    nums.shuffle() //打亂順序
+    var secret = nums.removeAt(0) //設定 secret 值，並將其值移出集合
+    var bomb = nums.removeAt(0)
+    println(nums)
+    println(secret)
+    println(bomb)
+
     //集合 List
-    var list = mutableListOf<Int>(2, 5, 8)
+    //var list = ListOf<Int>(2, 5, 8) 集合產生後無法增加資料
+    var list = mutableListOf<Int>(2, 5, 8) //mutableListOf 可改變內容的集合
     println(list)
     list.add(13)
     println(list)
