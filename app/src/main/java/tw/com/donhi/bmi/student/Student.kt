@@ -8,7 +8,8 @@ package tw.com.donhi.bmi.student
 //設計藍圖
 //類別(屬性)只能在第一層定義，其他均為區域變數 Local variable
 //主建構子可預先設定值
-class Student(val id: String, val name: String,
+//open 表可以讓其他類別繼承
+open class Student(val id: String, val name: String,
                 var english: Int = 0, var math: Int = 0) {
     //類別層級的屬性(物件共用一屬性) static, Companion Object(陪同型物件)
     companion object {
