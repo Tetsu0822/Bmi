@@ -31,8 +31,21 @@ fun main() {
         //將 結果崁入字串，若結果是運算得來的，則要在字串內使用大括弧{}包覆
         //println("你輸入的值為: $num ${input?.length}")
 
+        //使用 when Expression 描述式 來判斷
+        var message = when {
+            num < secret -> "再大一點!"
+            num > secret -> "再小一點!"
+            else -> {
+                bingo = true
+                "你猜對了!"
+            }
+        }
+        println(message)
+        if (bingo) {
+            break
+        }
         // if..else..判斷式
-        if ( num < secret ) {
+        /*if ( num < secret ) {
             println("再大一點!")
         } else if ( num > secret ) {
             println("再小一點!")
@@ -40,7 +53,7 @@ fun main() {
             println("你猜對了!")
             bingo = true
             break
-        }
+        }*/
     }
 
     if (!bingo) {
