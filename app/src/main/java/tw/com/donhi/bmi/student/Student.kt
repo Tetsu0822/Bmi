@@ -19,7 +19,7 @@ open class Student(val id: String, val name: String,
     //次要建構子是為了讓類別在某些情境上的使用，更能夠符合他們的需求
     //冒號後為回傳至主要建構子
 //    constructor(id: String, name: String) : this(id,name,0,0)
-    fun print() {
+    open fun print() {
         val mark = if (average() < pass) "*" else " "
         // /t 為定位點即空白
         println("$id\t$name\t$english\t$math\t${average()}$mark\t${grading()}")
