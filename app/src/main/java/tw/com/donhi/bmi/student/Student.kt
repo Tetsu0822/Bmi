@@ -9,6 +9,11 @@ package tw.com.donhi.bmi.student
 //類別(屬性)只能在第一層定義，其他均為區域變數 Local variable
 //主建構子可預先設定值
 //open 表可以讓其他類別繼承
+//存取修飾字 Access Modifier
+// 1.public 類別可公開使用
+// 2.private 私人,類別不可任意使用
+// 3.protected 被保護的,類別的子類別可使用
+//internal 模組內可使用
 open class Student(val id: String, val name: String,
                 var english: Int = 0, var math: Int = 0) {
     //類別層級的屬性(物件共用一屬性) static, Companion Object(陪同型物件)
