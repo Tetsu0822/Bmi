@@ -1,0 +1,12 @@
+package tw.com.donhi.bmi.student
+
+fun main() {
+    val reports = listOf<Report>(
+        FinanceReport(),
+        HealthReport()
+    )
+    for (report in reports) {
+        report.load()
+        report.print("Test")
+    }
+}
