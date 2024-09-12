@@ -1,6 +1,7 @@
 package tw.com.donhi.bmi
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +24,9 @@ class MainActivity2 : AppCompatActivity() {
         setContentView(binding.root)
     }
     fun guess(view: View) {
-        println("Clicked")
+        if (!binding.number.text.toString().equals("")) {
+            val num = binding.number.text.toString().toInt()
+            Log.d("MainActivity2", num.toString())
+        }
     }
 }
