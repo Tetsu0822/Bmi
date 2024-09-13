@@ -33,22 +33,22 @@ class MainActivity2 : AppCompatActivity() {
             val num = binding.number.text.toString().toInt()
             Log.d("MainActivity2", num.toString())
             val message = if (num > serect) {
-                "Smaller"
+                getString(R.string.smaller)
             } else if (num < serect) {
-                "Bigger"
+                getString(R.string.bigger)
             } else {
-                "You got it!"
+                getString(R.string.you_got_it)
             }
             //建置對話框
             AlertDialog.Builder(this)
-                .setTitle("Info")
+                .setTitle(getString(R.string.info))
                 .setMessage(message)
-                .setPositiveButton("OK", null)
+                .setPositiveButton(getString(R.string.OK), null)
                 .show()
         } else {
             //顯示訊息框(Context=MainActivity,String=訊息,Length 長度)
             //Toast 顯示不重要的提示訊息
-            Toast.makeText(this, "Please Enter a Number",
+            Toast.makeText(this, getString(R.string.please_enter_a_number),
                 Toast.LENGTH_LONG).show()
         }
     }
