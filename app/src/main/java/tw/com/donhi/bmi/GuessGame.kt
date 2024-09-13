@@ -7,10 +7,19 @@ import kotlin.random.Random
 //特性 2：Polymorphism多型
 //特性 3：Encapsulation封裝
 class GuessGame {
+    //Enumeration 列舉
+    enum class Status {
+        INIT, BIGGER, SMALLER, BINGO
+    }
+
     var secret:Int = Random.nextInt(1, 1)
     var counter = 0 //屬性
-    fun guess(n:Int) :Int {
-        return secret - n
+    var status = Status.INIT
+    fun guess(n:Int) : Status {
+        //return secret - n
+        return if (n > secret) Status.SMALLER
+        else if (n < secret) Status.BIGGER
+        else Status.BINGO
     }
     fun reset() {
         secret = Random.nextInt(1, 1)
