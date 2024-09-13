@@ -16,6 +16,7 @@ class GuessGame {
     var counter = 0 //屬性
     var status = Status.INIT
     fun guess(n:Int) : Status {
+        counter++
         //return secret - n
         return if (n > secret) Status.SMALLER
         else if (n < secret) Status.BIGGER

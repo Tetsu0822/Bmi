@@ -39,6 +39,8 @@ class MainActivity2 : AppCompatActivity() {
                 GuessGame.Status.BIGGER -> getString(R.string.bigger)
                 else -> getString(R.string.you_got_it)
             }
+            //將counter更新至畫面
+            binding.counter.text = game.counter.toString()
             //建置對話框
             AlertDialog.Builder(this)
                 .setTitle(getString(R.string.info))
