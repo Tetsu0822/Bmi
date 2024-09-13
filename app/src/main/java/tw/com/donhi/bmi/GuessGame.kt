@@ -12,7 +12,7 @@ class GuessGame {
         INIT, BIGGER, SMALLER, BINGO
     }
 
-    var secret:Int = Random.nextInt(1, 1)
+    var secret:Int = Random.nextInt(1, 11)
     var counter = 0 //屬性
     var status = Status.INIT
     fun guess(n:Int) : Status {
