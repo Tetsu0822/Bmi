@@ -23,7 +23,7 @@ class GuessGame {
         else Status.BINGO
     }
     fun reset() {
-        secret = Random.nextInt(1, 1)
+        secret = Random.nextInt(1, 11)
         counter = 0
     }
 }
