@@ -39,6 +39,27 @@ class MainActivity2 : AppCompatActivity() {
         viewModel.counter.observe(this, { counter ->
             binding.counter.text = counter.toString()
         })
+        viewModel.status.observe(this, { status ->
+            val message = when(status) {
+                GameStatus.BIGGER -> getString(R.string.bigger)
+                GameStatus.SMALLER -> getString(R.string.smaller)
+                GameStatus.INIT -> ""
+                else -> getString(R.string.you_got_it)
+            }
+            if (status != GameStatus.INIT) {
+                //建置對話框
+                AlertDialog.Builder(this)
+                    .setTitle(getString(R.string.info))
+                    .setMessage(message)
+                    .setPositiveButton(getString(R.string.OK), null)
+                    //Lambda 寫法
+                    .setNegativeButton("Relay", { dialog, which ->
+                        Log.d(TAG, "Replay")
+                        viewModel.reset()
+                    })
+                    .show()
+            }
+        })
         //GuessGame 取值
         //Toast.makeText(this, "serect: $serect", Toast.LENGTH_LONG).show()
         Toast.makeText(this, "serect: ${game.secret}", Toast.LENGTH_LONG).show()
