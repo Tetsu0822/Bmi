@@ -2,6 +2,7 @@ package tw.com.donhi.bmi
 
 import android.content.DialogInterface
 import android.content.DialogInterface.OnClickListener
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -108,5 +109,12 @@ class MainActivity2 : AppCompatActivity() {
                 Toast.LENGTH_LONG).show()
         }
          */
+    }
+
+    fun setNickName(view: View) {
+        //Intent意圖,1.顯性意圖 Explicit,2.隱性意圖 Implicict
+        val intent = Intent(this, NickNameActivity::class.java)
+        //送到Android系統才會到清單內找到此Activity，然後顯示在畫面上
+        startActivity(intent)
     }
 }
