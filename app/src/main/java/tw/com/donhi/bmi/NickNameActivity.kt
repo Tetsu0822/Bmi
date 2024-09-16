@@ -30,6 +30,11 @@ class NickNameActivity : AppCompatActivity() {
 
     fun save(view: View) {
         val nickname = binding.edNickName.text.toString()
+        //儲存結果到本機
+        getSharedPreferences("guess", MODE_PRIVATE)
+            .edit()
+            .putString("nickname", nickname)
+            .apply() //commit()立即儲存資料,apply()稍後儲存資料
         //設定回傳值
         setResult(RESULT_OK, intent.putExtra("NICK",nickname))
         //結束此方法
