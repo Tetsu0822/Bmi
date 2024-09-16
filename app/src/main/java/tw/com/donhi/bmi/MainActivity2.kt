@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import tw.com.donhi.bmi.databinding.ActivityMainBinding
 
 class MainActivity2 : AppCompatActivity() {
+    private val NICKNAME_REQ: Int = 11
     private lateinit var viewModel: GuessViewModel
     //MainActivity2 使用簡易名稱
     val TAG = MainActivity2::class.java.simpleName
@@ -117,8 +118,19 @@ class MainActivity2 : AppCompatActivity() {
         //傳送資料到新的畫面
         intent.putExtra("EXTRAS_LEVEL", 3)
         intent.putExtra("NAME", "Tetsu")
-
         //送到Android系統才會到清單內找到此Activity，然後顯示在畫面上
-        startActivity(intent)
+        //startActivity 僅切換畫面
+//        startActivity(intent)
+        //取得另一畫面的回傳值,自動複寫onActivityResult
+        startActivityForResult(intent, NICKNAME_REQ)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == NICKNAME_REQ) {
+            Log.d(TAG, "onActivityResult: $resultCode")
+            val nickname = data?.getStringExtra("NICK")
+            Log.d(TAG, "onActivityResult: $nickname")
+        }
     }
 }
