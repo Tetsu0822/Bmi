@@ -11,9 +11,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import tw.com.donhi.bmi.databinding.ActivityMainBinding
 
 class MainActivity2 : AppCompatActivity() {
+    private lateinit var viewModel: GuessViewModel
     //MainActivity2 使用簡易名稱
     val TAG = MainActivity2::class.java.simpleName
     private lateinit var binding: ActivityMainBinding
@@ -31,6 +33,8 @@ class MainActivity2 : AppCompatActivity() {
         }
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //建立ViewModel物件，此物件只存活在onCreate()
+        viewModel = ViewModelProvider(this).get(GuessViewModel::class.java)
         //GuessGame 取值
         //Toast.makeText(this, "serect: $serect", Toast.LENGTH_LONG).show()
         Toast.makeText(this, "serect: ${game.secret}", Toast.LENGTH_LONG).show()
