@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -23,6 +24,13 @@ class MainActivity2 : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     //val serect = (1..10).random() 已放入GuessGame類跌
     val game = GuessGame()
+    //訂定Activity Result合約
+    val requestNickName = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val nickname = result.data?.getStringExtra("NICK")
+            Log.d(TAG, "Result: $nickname")
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -122,7 +130,9 @@ class MainActivity2 : AppCompatActivity() {
         //startActivity 僅切換畫面
 //        startActivity(intent)
         //取得另一畫面的回傳值,自動複寫onActivityResult
-        startActivityForResult(intent, NICKNAME_REQ)
+        //已棄用，由Activity Result API 取代
+        //startActivityForResult(intent, NICKNAME_REQ)
+        requestNickName.launch(intent)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
