@@ -114,6 +114,10 @@ class MainActivity2 : AppCompatActivity() {
     fun setNickName(view: View) {
         //Intent意圖,1.顯性意圖 Explicit,2.隱性意圖 Implicict
         val intent = Intent(this, NickNameActivity::class.java)
+        //傳送資料到新的畫面
+        intent.putExtra("EXTRAS_LEVEL", 3)
+        intent.putExtra("NAME", "Tetsu")
+
         //送到Android系統才會到清單內找到此Activity，然後顯示在畫面上
         startActivity(intent)
     }
