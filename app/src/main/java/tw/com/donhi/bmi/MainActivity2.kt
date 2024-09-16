@@ -36,10 +36,10 @@ class MainActivity2 : AppCompatActivity() {
         //建立ViewModel物件，此物件只存活在onCreate()
         viewModel = ViewModelProvider(this).get(GuessViewModel::class.java)
         //使用LiveData的observe方法(介面)觀察畫面counter變動
-        viewModel.counter.observe(this, { counter ->
+        viewModel.counter.observe(this) { counter ->
             binding.counter.text = counter.toString()
-        })
-        viewModel.status.observe(this, { status ->
+        }
+        viewModel.status.observe(this) { status ->
             val message = when(status) {
                 GameStatus.BIGGER -> getString(R.string.bigger)
                 GameStatus.SMALLER -> getString(R.string.smaller)
@@ -52,17 +52,24 @@ class MainActivity2 : AppCompatActivity() {
                     .setTitle(getString(R.string.info))
                     .setMessage(message)
                     .setPositiveButton(getString(R.string.OK), null)
-                    //Lambda 寫法
-                    .setNegativeButton("Relay", { dialog, which ->
+                    //Lambda 原始寫法
+//                    .setNegativeButton("Relay", { dialog, which ->
+//                        Log.d(TAG, "Replay")
+//                        viewModel.reset()
+//                    })
+                    //若Lambda 為最後的設定則可將其移出小括弧()
+                    .setNegativeButton("Relay") { dialog, which ->
                         Log.d(TAG, "Replay")
                         viewModel.reset()
-                    })
+                    }
                     .show()
             }
-        })
-        //GuessGame 取值
-        //Toast.makeText(this, "serect: $serect", Toast.LENGTH_LONG).show()
-        Toast.makeText(this, "serect: ${game.secret}", Toast.LENGTH_LONG).show()
+        }
+        viewModel.serectData.observe(this) { serect ->
+            //GuessGame 取值
+            //Toast.makeText(this, "serect: $serect", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "serect: $serect", Toast.LENGTH_LONG).show()
+        }
     }
     fun guess(view: View) {
         viewModel.guess(binding.number.text.toString().toInt())

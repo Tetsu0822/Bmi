@@ -14,6 +14,7 @@ class GuessViewModel : ViewModel() {
     init {
         counter.value = 0
         status.value = GameStatus.INIT
+        serectData.value = serect
     }
 
     fun guess(num : Int) {
@@ -32,6 +33,7 @@ class GuessViewModel : ViewModel() {
         serect = (1..10).random()
         counter.value = 0
         status.value = GameStatus.INIT
+        serectData.value = serect
     }
 }
 
