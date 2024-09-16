@@ -35,11 +35,17 @@ class MainActivity2 : AppCompatActivity() {
         setContentView(binding.root)
         //建立ViewModel物件，此物件只存活在onCreate()
         viewModel = ViewModelProvider(this).get(GuessViewModel::class.java)
+        //使用LiveData的observe方法(介面)觀察畫面counter變動
+        viewModel.counter.observe(this, { counter ->
+            binding.counter.text = counter.toString()
+        })
         //GuessGame 取值
         //Toast.makeText(this, "serect: $serect", Toast.LENGTH_LONG).show()
         Toast.makeText(this, "serect: ${game.secret}", Toast.LENGTH_LONG).show()
     }
     fun guess(view: View) {
+        viewModel.guess(binding.number.text.toString().toInt())
+        /*
         if (!binding.number.text.toString().equals("")) {
             val num = binding.number.text.toString().toInt()
             val message = when(game.guess(num)) {
@@ -73,5 +79,6 @@ class MainActivity2 : AppCompatActivity() {
             Toast.makeText(this, getString(R.string.please_enter_a_number),
                 Toast.LENGTH_LONG).show()
         }
+         */
     }
 }
