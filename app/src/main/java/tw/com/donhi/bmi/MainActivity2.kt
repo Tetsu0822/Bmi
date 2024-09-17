@@ -137,6 +137,13 @@ class MainActivity2 : AppCompatActivity() {
         //已棄用，由Activity Result API 取代
         //startActivityForResult(intent, NICKNAME_REQ)
         requestNickName.launch(intent)
+        //Kotlin寫法,Scope Functions
+        Intent(this, NickNameActivity::class.java).apply {
+            putExtra("A", "ABC")
+            putExtra("B", "Testing")
+        }.also {
+            requestNickName.launch(it)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
