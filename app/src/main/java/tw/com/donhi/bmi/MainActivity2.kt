@@ -14,6 +14,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.room.Room
+import tw.com.donhi.bmi.data.GameDataBase
+import tw.com.donhi.bmi.data.Record
 import tw.com.donhi.bmi.databinding.ActivityMainBinding
 
 class MainActivity2 : AppCompatActivity() {
@@ -84,6 +87,22 @@ class MainActivity2 : AppCompatActivity() {
             //Toast.makeText(this, "serect: $serect", Toast.LENGTH_LONG).show()
             Toast.makeText(this, "serect: $serect", Toast.LENGTH_LONG).show()
         }
+        //Room Test
+        val database = Room.databaseBuilder(this,
+            GameDataBase::class.java, "game.db")
+            .build()
+        val record = Record("Jack", 3)
+        //主執行緒不能直接執行負荷較重的程式，需產生另外的執行緒來執行
+        //使用Kotlin Coroutines協同,或Java的執行緒Thread
+        Thread() {
+            //寫入資料
+            //database.recordDao().insert(record)
+            //讀取列出資料
+            val list = database.recordDao().getAll()
+            for (r in list) {
+                Log.d(TAG, "onCreate: ${r.nickname}")
+            }
+        }.start()
     }
     fun guess(view: View) {
         viewModel.guess(binding.number.text.toString().toInt())
